@@ -1,6 +1,9 @@
 package com.example.sprawd;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +23,15 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Button generateBtn = findViewById(R.id.generateBtn);
+        Button submitBtn = findViewById(R.id.submitBtn);
+        EditText nameInput = findViewById(R.id.nameInput);
+        EditText surnameInput = findViewById(R.id.surnameInput);
+        EditText countInput = findViewById(R.id.countInput);
+        CheckBox check1 = findViewById(R.id.check1);
+        CheckBox check2 = findViewById(R.id.check2);
+        CheckBox check3 = findViewById(R.id.check3);
+
     }
 }

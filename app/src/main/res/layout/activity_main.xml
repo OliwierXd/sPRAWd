@@ -3,22 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C2E9E1"
+    android:orientation="vertical"
+    android:padding="64px"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Dane pracownika"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/nameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -26,7 +30,7 @@
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/surnameInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -36,42 +40,57 @@
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:spinnerMode="dialog" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Generowanie hasła" />
+        android:layout_marginTop="24sp"
+        android:text="Generowanie hasła"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/countInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Ile znaków?"
+        android:inputType="number" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/check1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Małe i wielkie litery" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/check2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cyfry" />
 
     <CheckBox
-        android:id="@+id/checkBox3"
+        android:id="@+id/check3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Znaki specjalne" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
+        android:id="@+id/generateBtn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:backgroundTint="#00BCD4"
         android:text="Generuj hasło" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/submitBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#00BCD4"
         android:text="Zatwierdz" />
 
 </LinearLayout>

@@ -43,24 +43,20 @@ public class MainActivity extends AppCompatActivity {
         generateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Character[] lower = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-                Character[] upper = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-                Character[] digits = {'1', '2','3','4','5','6','7','8','9','0'};
-                Character[] symbols = {'!', '?',  '@', '#', '$', '%', '&'};
-                ArrayList<Character> all = new ArrayList<Character>();
+                String lower = "abcdefghijklmnopqrstuvwxyz";
+                String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                String digits = "1234567890";
+                String symbols = "!@#$%^&*()_+-=.";
 
-                if (check1.isChecked()) {
-                    all.addAll(Arrays.asList(lower));
-                    all.addAll(Arrays.asList(upper));
-                },
-                if (check2.isChecked()) all.addAll(Arrays.asList(digits));
-                if (check3.isChecked()) all.addAll(Arrays.asList(symbols));
 
                 Random rnd = new Random();
                 String pass = "";
 
                 for (int i = 0; i < 8; i++) {
-                    pass += all.get(rnd.nextInt(all.size()));
+                    if (i == 0 && check1.isChecked()) pass += upper.charAt(rnd.nextInt(upper.length()));
+                    else if (i == 1 && check2.isChecked()) pass += digits.charAt(rnd.nextInt(digits.length()));
+                    else if (i == 2 && check3.isChecked()) pass += symbols.charAt(rnd.nextInt(symbols.length()));
+                    else pass += lower.charAt(rnd.nextInt(lower.length()));
                 }
 
                 Toast.makeText(MainActivity.this, pass, Toast.LENGTH_SHORT).show();

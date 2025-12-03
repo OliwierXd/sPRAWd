@@ -45,9 +45,9 @@ public class MainActivity extends AppCompatActivity {
         CheckBox check3 = findViewById(R.id.check3);
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        String[] items = {"Kierownik", "Starszy programista", "Młodszy programista", "Tester"};
 
-
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, courses);
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("Wygenerowane hasło");
-                builder.setMessage(generatePassword(check1.isChecked(), check2.isChecked(), check3.isChecked()))
+                builder.setMessage(generatePassword(Integer.parseInt(countInput.getText().toString()), check1.isChecked(), check2.isChecked(), check3.isChecked()))
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Xd!
@@ -70,11 +70,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Wygenerowane hasło");
+                builder.setTitle("Dane pracownika");
                 builder.setMessage("Imię: "+nameInput.getText().toString() + "\n" +
                                 "Nazwisko: "+surnameInput.getText().toString() + "\n" +
-                                "Stanowisko: "+surnameInput.getText().toString() + "\n" +
-                                "Hasło: "+generatePassword(check1.isChecked(), check2.isChecked(), check3.isChecked()) + "\n")
+                                "Stanowisko: "+spinner.getSelectedItem().toString() + "\n" +
+                                "Hasło: "+generatePassword(Integer.parseInt(countInput.getText().toString()), check1.isChecked(), check2.isChecked(), check3.isChecked()) + "\n")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Xd!
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    String generatePassword(boolean u, boolean d, boolean s) {
+    String generatePassword(int count, boolean u, boolean d, boolean s) {
         String lower = "abcdefghijklmnopqrstuvwxyz";
         String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String digits = "1234567890";
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         Random rnd = new Random();
         String pass = "";
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < count; i++) {
             if (i == 0 && u) pass += upper.charAt(rnd.nextInt(upper.length()));
             else if (i == 1 && d) pass += digits.charAt(rnd.nextInt(digits.length()));
             else if (i == 2 && s) pass += symbols.charAt(rnd.nextInt(symbols.length()));
